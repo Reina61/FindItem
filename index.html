@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b67">
+  <meta name="description" content="FindItem membantu warga Jakarta melaporkan dan mencari barang hilang atau ditemukan.">
+  <title>FindItem — Temukan kembali barangmu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="FindItem beranda">
+      <span class="brand-mark">F</span><span>Find<span class="brand-accent">Item</span></span>
+    </a>
+    <nav>
+      <a href="#laporan">Jelajahi laporan</a>
+      <a href="#cara-kerja">Cara kerja</a>
+    </nav>
+    <a class="nav-cta" href="#buat-laporan">+ Buat laporan</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="live-dot"></span> Layanan komunitas • Jakarta</span>
+        <h1>Barang hilang?<br><span>Jangan kehilangan harapan.</span></h1>
+        <p>Tempat sederhana untuk melaporkan barang hilang dan barang yang ditemukan di sekitar Jakarta.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#laporan">Cari barang <span>→</span></a>
+          <a class="button button-outline" href="#buat-laporan">Buat laporan</a>
+        </div>
+        <div class="hero-note">Gratis untuk mulai digunakan • Berbasis komunitas</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="search-illustration"><span class="glass"></span><span class="spark spark-a">✦</span><span class="spark spark-b">✧</span><span class="mini-card">✓</span></div>
+        <div class="floating-tag tag-top">Barang ditemukan</div>
+        <div class="floating-tag tag-bottom">Tetap ada harapan ✨</div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Ringkasan laporan">
+      <div><strong id="total-count">0</strong><span>Total laporan di perangkat ini</span></div>
+      <div><strong id="lost-count">0</strong><span>Barang hilang</span></div>
+      <div><strong id="found-count">0</strong><span>Barang ditemukan</span></div>
+    </section>
+
+    <section class="content-section" id="laporan">
+      <div class="section-heading">
+        <div><span class="eyebrow dark-eyebrow">TEMUKAN LAPORAN</span><h2>Jelajahi laporan</h2><p>Cari berdasarkan nama barang atau wilayah Jakarta.</p></div>
+        <span class="local-label">📍 Jakarta</span>
+      </div>
+      <div class="filters">
+        <label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Cari dompet, HP, kunci..." aria-label="Cari laporan"></label>
+        <select id="type-filter" aria-label="Filter jenis laporan">
+          <option value="all">Semua laporan</option><option value="lost">Barang hilang</option><option value="found">Barang ditemukan</option>
+        </select>
+        <select id="area-filter" aria-label="Filter wilayah">
+          <option value="all">Semua wilayah</option>
+          <option>Jakarta Pusat</option><option>Jakarta Utara</option><option>Jakarta Barat</option><option>Jakarta Selatan</option><option>Jakarta Timur</option><option>Kepulauan Seribu</option>
+        </select>
+      </div>
+      <div id="report-list" class="report-grid"></div>
+      <div id="empty-state" class="empty-state hidden"><div class="empty-icon">⌕</div><h3>Belum ada laporan yang cocok</h3><p>Coba kata kunci atau filter lainnya.</p></div>
+    </section>
+
+    <section class="how-section" id="cara-kerja">
+      <div class="section-heading"><div><span class="eyebrow dark-eyebrow">MUDAH DAN SEDERHANA</span><h2>Cara kerja FindItem</h2></div></div>
+      <div class="steps">
+        <article><span class="step-number">01</span><h3>Buat laporan</h3><p>Isi informasi dasar barang yang hilang atau ditemukan.</p></article>
+        <article><span class="step-number">02</span><h3>Cari kecocokan</h3><p>Telusuri laporan berdasarkan nama barang dan wilayah.</p></article>
+        <article><span class="step-number">03</span><h3>Hubungi dengan aman</h3><p>Gunakan informasi kontak secara bijak dan verifikasi kepemilikan.</p></article>
+      </div>
+    </section>
+
+    <section class="form-section" id="buat-laporan">
+      <div class="form-intro"><span class="eyebrow dark-eyebrow">BANTU KOMUNITAS</span><h2>Bagikan informasi barang</h2><p>Semakin jelas informasi yang dibagikan, semakin mudah orang lain membantu.</p><div class="form-tip">🔒 Jangan cantumkan alamat rumah, nomor identitas, atau informasi rahasia pada deskripsi publik.</div></div>
+      <form id="report-form" class="report-form">
+        <div class="form-title">Buat laporan baru <span>Formulir</span></div>
+        <label>Jenis laporan<select id="report-type" required><option value="lost">Saya kehilangan barang</option><option value="found">Saya menemukan barang</option></select></label>
+        <label>Nama barang<input id="item-name" maxlength="60" placeholder="Contoh: Dompet hitam" required></label>
+        <div class="form-row">
+          <label>Wilayah<select id="item-area" required><option value="">Pilih wilayah</option><option>Jakarta Pusat</option><option>Jakarta Utara</option><option>Jakarta Barat</option><option>Jakarta Selatan</option><option>Jakarta Timur</option><option>Kepulauan Seribu</option></select></label>
+          <label>Tanggal kejadian<input id="item-date" type="date" required></label>
+        </div>
+        <label>Deskripsi singkat<textarea id="item-description" rows="3" maxlength="400" placeholder="Ciri-ciri umum dan perkiraan lokasi. Jangan tulis data sensitif." required></textarea></label>
+        <label>Kontak untuk dihubungi (opsional)<input id="item-contact" maxlength="80" placeholder="Contoh: email atau akun media sosial"></label>
+        <button class="button button-primary submit-button" type="submit">Terbitkan laporan <span>→</span></button>
+        <p class="form-disclaimer">Versi awal: laporan disimpan hanya di browser/perangkat ini, belum terlihat oleh pengguna lain.</p>
+        <p id="form-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">F</span><span>Find<span class="brand-accent">Item</span></span></a><p>TemuBarang Jakarta • Dibuat untuk membantu sesama.</p><small>FindItem bukan layanan resmi pemerintah atau kepolisian.</small></footer>
+
+  <dialog id="detail-dialog" class="detail-dialog">
+    <button class="dialog-close" id="dialog-close" aria-label="Tutup">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
